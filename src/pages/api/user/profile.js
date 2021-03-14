@@ -1,7 +1,6 @@
 import { connectToDatabase } from '../../../../util/mongodb';
-import { NowRequest, NowResponse } from '@vercel/node';
 
-export default async function handler(req: NowRequest, res: NowResponse) {
+export default async function handler(req, res) {
 
   const { email, password } = req.body;
 

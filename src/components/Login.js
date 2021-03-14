@@ -1,5 +1,4 @@
-import { useState, useContext, FormEvent } from 'react';
-import { ChallengesContext } from '../contexts/ChallengeContext';
+import { useState} from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -15,7 +14,7 @@ export function Login() {
   const [register, setRegister] = useState(false);
   const router = useRouter();
 
-  async function handleRegister(event: FormEvent) {
+  async function handleRegister(event) {
     event.preventDefault();
 
     if (!password || !email || !name || !confirmPassword) {
@@ -40,7 +39,7 @@ export function Login() {
     
   }
 
-  async function handleLogin(event: FormEvent) {
+  async function handleLogin(event) {
     event.preventDefault();
 
     if (!password || !email) {
@@ -65,7 +64,6 @@ export function Login() {
 
       router.push('/Home');
     } else {
-
       alert(JSON.stringify(response.data.message));
     }
 

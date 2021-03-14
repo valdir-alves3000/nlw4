@@ -1,7 +1,6 @@
 import { connectToDatabase } from '../../../../util/mongodb';
-import { NowResponse, NowRequest } from '@vercel/node';
 
-export default async function handler(req: NowRequest, res: NowResponse) {
+export default async function handler(req, res) {
 
   const { email, password, name } = req.body;
 
@@ -24,7 +23,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
   const user = await db.collection('users').findOne({email});
 
   if(user) {
-    return res.json({ message: "E-mail already registered! Try again with another email" })
+    return res.json({ message: "E-mail already registered! Try again with another email", user: true })
   }
   
   const response = await db.collection('users')

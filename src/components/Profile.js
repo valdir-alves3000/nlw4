@@ -1,10 +1,12 @@
 import { useContext } from 'react';
 import { ChallengesContext } from '../contexts/ChallengeContext';
 
+import Cookies from 'js-cookie';
 import styles from '../styles/components/Profile.module.css';
 
 export function Profile() {
-  const { level, name, } = useContext(ChallengesContext);
+  const { level } = useContext(ChallengesContext);
+  const name = Cookies.get('name');
   
   return (
     <div className={styles.profileContainer}>
