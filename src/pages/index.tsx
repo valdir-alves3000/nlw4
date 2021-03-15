@@ -1,7 +1,12 @@
-import { Login } from '../components/Login';
+import { SignInUpProvider } from '../contexts/SignInUpContext';
+
+import { SignIn } from '../components/SignIn';
 
 export default function Index() {
   return (
-    <Login />
+    <SignInUpProvider>
+      <SignIn />
+    </SignInUpProvider>
+   
   );  
 }

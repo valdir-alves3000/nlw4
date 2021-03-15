@@ -1,7 +1,8 @@
-import { createContext, useState, ReactNode, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import challenges from '../../challenge.json';
 
+import axios from 'axios';
 import { LevelUpModal } from '../components/LevelUpModal';
 
 export const ChallengesContext = createContext({});
@@ -10,12 +11,14 @@ export function ChallengesProvider({
   children,
   ...rest 
 }) {
+  const id = Cookies.get('id');
   const [level, setLevel] = useState(rest.level ?? 1);
   const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
   const [challengesCompleted, setChallengesCompleted] = useState( rest.challengesCompleted ?? 0);
 
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
+  
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
@@ -24,10 +27,26 @@ export function ChallengesProvider({
   },[]);
 
   useEffect(() => {
+    
     Cookies.set('level', String(level));
     Cookies.set('currentExperience', String(currentExperience));
     Cookies.set('challengesCompleted', String(challengesCompleted));
+    Cookies.set('experienceToNextLevel', String(experienceToNextLevel));
+  
+    updateData();
   },[level, currentExperience, challengesCompleted]);
+
+  
+  async function updateData() {
+  
+    await axios.put('api/user/updateUser', {
+      id,
+      level,
+      currentExperience,
+      challengesCompleted,
+      experienceToNextLevel
+    })    
+  }
 
   function levelUp() {
     setLevel(level + 1);

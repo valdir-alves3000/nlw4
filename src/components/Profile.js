@@ -10,7 +10,7 @@ export function Profile() {
   
   return (
     <div className={styles.profileContainer}>
-      <img src="https://github.com/valdir-alves3000.png" alt="Valdir Alves" />
+      <img src="icons/user.svg" alt="User" />
       <div>
 
         <strong>{name}</strong>

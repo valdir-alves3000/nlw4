@@ -23,11 +23,11 @@ export default async function handler(req, res) {
   const user = await db.collection('users').findOne({email});
 
   if(user) {
-    return res.json({ message: "E-mail already registered! Try again with another email", user: true })
+    return res.json({ message: true})
   }
   
   const response = await db.collection('users')
   .insertOne(data)
 
-  res.status(200).json({ message: "User successfully registered!" });
+  res.status(200).json({ message: "Usuário registrado com sucesso!" });
 }
