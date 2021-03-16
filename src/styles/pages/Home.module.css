@@ -18,3 +18,10 @@
 
   margin-top: 4rem;
 }
+
+@media(max-width: 700px) {
+  .container section {
+    display: block;
+    margin-top: 1rem;
+  }
+}

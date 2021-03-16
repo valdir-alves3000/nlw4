@@ -24,9 +24,9 @@ export default function Home(props: HomeProps) {
       challengesCompleted={props.challengesCompleted}
     >
       <div className={styles.container}>
-        <Head>
+      <Head>
         <link rel="shortcut icon" href="/favicon.png" type="image/png"/>
-          <title>Início | move.it</title>
+          <title>Pomodoro | Projeto Integrador V</title>
         </Head>
         <ExperienceBar />
         <CountdownProvider>

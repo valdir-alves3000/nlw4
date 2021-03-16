@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import challenges from '../../challenge.json';
+import challenges from '../../util/challenge';
 
 import axios from 'axios';
 import { LevelUpModal } from '../components/LevelUpModal';

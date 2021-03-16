@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useContext } from 'react';
 import { SignInUpContext } from '../contexts/SignInUpContext';
 
@@ -18,6 +19,10 @@ export function SignIn() {
   return (
 
     <div className={styles.container}>
+       <Head>
+        <link rel="shortcut icon" href="/favicon.png" type="image/png"/>
+          <title>Pomodoro | Projeto Integrador V</title>
+        </Head>
       {
         signUp ? (
           <SignUp />

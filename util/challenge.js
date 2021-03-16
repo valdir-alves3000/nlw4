@@ -1,4 +1,4 @@
-[
+export default [
   {
     "type": "body",
     "description": "Estique um de seus braços com a palma da mão virada para frente e puxe os dedos para cima por 10 segundos por mão.",
