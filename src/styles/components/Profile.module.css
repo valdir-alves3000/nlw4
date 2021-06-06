@@ -43,8 +43,10 @@
 
 .profileContainer div button:hover {
   background-color: var(--gray-line);
-  border: 1px solid var(--red);
-  
+}
+
+.profileContainer div .buttonOut:hover {
+  border: 1px solid var(--red);  
 }
 
 .profileContainer div p {
