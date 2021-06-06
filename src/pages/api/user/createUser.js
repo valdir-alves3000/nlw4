@@ -2,19 +2,25 @@ import { connectToDatabase } from '../../../../util/mongodb';
 
 export default async function handler(req, res) {
 
-  const { email, password, name } = req.body;
+  const { 
+    email,
+    name,
+    level,
+    currentExperience,
+    experienceToNextLevel,
+    challengesCompleted, 
+  } = req.body;
 
   const data = {
     email,
-    password: String(password),
     name,
-    level: 1,
-    currentExperience: 0,
-    experienceToNextLevel: 0,
-    challengesCompleted: 0,
+    level,
+    currentExperience,
+    experienceToNextLevel,
+    challengesCompleted,
   }
 
-  if(!email || !password || !name) {
+  if(!email || !name) {
     return res.status(404).json({ message: "Empty field is not allowed!" })
   }
 

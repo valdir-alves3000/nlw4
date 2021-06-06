@@ -1,23 +1,33 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ChallengesContext } from '../contexts/ChallengeContext';
 
-import Cookies from 'js-cookie';
 import styles from '../styles/components/Profile.module.css';
+
+import { signIn, signOut, useSession } from 'next-auth/client';
 
 export function Profile() {
   const { level } = useContext(ChallengesContext);
-  const name = Cookies.get('name');
+  const [session] = useSession();
   
   return (
     <div className={styles.profileContainer}>
-      <img src="icons/user.svg" alt="User" />
+      {session ? (
+        <img style={{ cursor: 'pointer' }}
+          onClick={() => signOut()}
+          src={session?.user?.image} alt={session?.user?.name} />
+      ) : (
+        <img src="icons/user.svg" alt="User" />
+      )}
       <div>
-
-        <strong>{name}</strong>
+        {session ? (
+          <strong>{session?.user?.name}</strong>
+        ) : (
+          <button onClick={() => signIn('google')}>SignIn</button>
+        )}
         <p>
-          <img src="icons/level.svg" alt="Level"/>
+          <img src="icons/level.svg" alt="Level" />
           Level {level}
-          </p>
+        </p>
       </div>
     </div>
   );

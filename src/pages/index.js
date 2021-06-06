@@ -10,13 +10,7 @@ import { CountdownProvider } from '../contexts/CountdownContext';
 import { ChallengesProvider } from '../contexts/ChallengeContext';
 import styles from '../styles/pages/Home.module.css';
 
-interface HomeProps {
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-  
-}
-export default function Home(props: HomeProps) {
+export default function Home(props) {
   return (
     <ChallengesProvider
       level={props.level}
@@ -45,7 +39,8 @@ export default function Home(props: HomeProps) {
     </ChallengesProvider>
   )
 }
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+
+export async function getServerSideProps(ctx) {
   const { level, currentExperience, challengesCompleted, } = ctx.req.cookies;
   return {
     props: {     
