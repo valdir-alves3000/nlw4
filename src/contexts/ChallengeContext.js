@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import challenges from '../../util/challenge';
 
-import { useSession, signIn } from 'next-auth/client';
+import { useSession} from 'next-auth/client';
 import axios from 'axios';
 import { LevelUpModal } from '../components/LevelUpModal';
 
@@ -65,9 +65,7 @@ export function ChallengesProvider({
         })
       }
     
-    }
-
-   
+    }   
   }
 
   async function updateData() {

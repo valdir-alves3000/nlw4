@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react';
+import { useContext} from 'react';
 import { ChallengesContext } from '../contexts/ChallengeContext';
 
 import styles from '../styles/components/Profile.module.css';
-
+import { FiPower } from 'react-icons/fi';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
 export function Profile() {
@@ -13,16 +13,27 @@ export function Profile() {
     <div className={styles.profileContainer}>
       {session ? (
         <img style={{ cursor: 'pointer' }}
-          onClick={() => signOut()}
           src={session?.user?.image} alt={session?.user?.name} />
       ) : (
         <img src="icons/user.svg" alt="User" />
       )}
       <div>
         {session ? (
+          <>
           <strong>{session?.user?.name}</strong>
+          <button 
+          className={styles.buttonOut}
+          onClick={() => signOut()}
+          >
+            <FiPower />
+            </button>
+          </>
         ) : (
-          <button onClick={() => signIn('google')}>SignIn</button>
+          <button 
+          className={styles.button}
+          onClick={() => signIn('google')}
+          >
+            SignIn</button>
         )}
         <p>
           <img src="icons/level.svg" alt="Level" />
